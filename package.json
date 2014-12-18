@@ -1,7 +1,12 @@
 {
   "name": "ng-table-export",
-  "version": "0.1.1",
+  "version": "0.2.0",
+  "private": true,
   "author": "Vitalii Savchuk <esvit666@gmail.com>",
+  "contributors": [{
+    "name": "Jonathan Lomas",
+    "email": "jonathan@floatinglomas.ca"
+  }],
   "license": "BSD",
   "repository": {
     "type": "git",

@@ -8,6 +8,9 @@ angular.module('ngTableExport', [])
         restrict: 'A',
         scope: false,
         link: function(scope, element, attrs) {
+            var lineEnding = (attrs.exportCsvEnding && attrs.exportCsvEnding.indexOf('win')) ? '\r\n' : '\n';
+            var separator = attrs.exportCsvSeparator || ';';
+
             var data = '';
             var csv = {
                 stringify: function(str) {
@@ -17,25 +20,25 @@ angular.module('ngTableExport', [])
                         '"';
                 },
                 generate: function() {
-                    data = '"sep=;"\n';
+                    data = '"sep=' + separator + '"' + lineEnding;
                     var rows = element.find('tr');
                     angular.forEach(rows, function(row, i) {
-                        var tr = angular.element(row),
-                            tds = tr.find('th'),
-                            rowData = '';
+                        var tr = angular.element(row);
                         if (tr.hasClass('ng-table-filters')) {
                             return;
                         }
+                        var tds = tr.find('th'),
+                            rowData = '';
                         if (tds.length == 0) {
                             tds = tr.find('td');
                         }
                         if (i != 1) {
                             angular.forEach(tds, function(td, i) {
-                                rowData += csv.stringify(angular.element(td).text()) + ';';
+                                rowData += csv.stringify(angular.element(td).text()) + separator;
                             });
                             rowData = rowData.slice(0, rowData.length - 1); //remove last semicolon
                         }
-                        data += rowData + "\n";
+                        data += rowData + lineEnding;
                     });
                 },
                 link: function() {
