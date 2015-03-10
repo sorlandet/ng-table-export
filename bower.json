@@ -1,12 +1,13 @@
 {
-  "name": "fl-ng-table-export",
-  "version": "0.2.0",
+  "name": "ivanvc-ng-table-export",
+  "version": "0.2.1",
   "main": [
     "ng-table-export.js"
   ],
   "authors": [
     "Vitalii Savchuk <esvit666@gmail.com>",
-    "Jonathan Lomas <jonathan@floatinglomas.ca>"
+    "Jonathan Lomas <jonathan@floatinglomas.ca>",
+    "Ivan Valdes <ivan@vald.es>"
   ],
   "ignore": [
     "src"
