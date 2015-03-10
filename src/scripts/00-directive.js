@@ -10,6 +10,7 @@ angular.module('ngTableExport', [])
         link: function(scope, element, attrs) {
             var lineEnding = (attrs.exportCsvEnding && attrs.exportCsvEnding.indexOf('win')) ? '\r\n' : '\n';
             var separator = attrs.exportCsvSeparator || ';';
+            var contentType = attrs.contentType || 'text/csv';
 
             var data = '';
             var csv = {
@@ -42,7 +43,7 @@ angular.module('ngTableExport', [])
                     });
                 },
                 link: function() {
-                    return 'data:text/csv;charset=UTF-8,' + encodeURIComponent(data);
+                    return 'data:' + contentType + ';charset=UTF-8,' + encodeURIComponent(data);
                 }
             };
             $parse(attrs.exportCsv).assign(scope.$parent, csv);
