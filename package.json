@@ -1,6 +1,6 @@
 {
   "name": "ng-table-export",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "private": true,
   "author": "Vitalii Savchuk <esvit666@gmail.com>",
   "contributors": [
@@ -11,7 +11,11 @@
     {
       "name": "Ivan Valdes",
       "email": "ivan@vald.es"
-    }
+    },
+    {
+      "name": "Evgeniy Medvedev",
+      "email": "yevgeniy.medvedev@gmail.com"
+    },
   ],
   "license": "BSD",
   "repository": {
