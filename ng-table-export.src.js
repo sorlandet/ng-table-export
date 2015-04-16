@@ -28,14 +28,21 @@ angular.module('ngTableExport', [])
                         if (tr.hasClass('ng-table-filters')) {
                             return;
                         }
-                        var tds = tr.find('th'),
-                            rowData = '';
+                        var tds = tr.find('th'), rowData = '', headers = true;
                         if (tds.length == 0) {
                             tds = tr.find('td');
+                            headers = false;
                         }
-
                         angular.forEach(tds, function(td, i) {
-                            rowData += csv.stringify(angular.element(td).text()) + separator;
+                            var el = angular.element(td);
+                            var value = el.text();
+                            if (headers) {
+                                var title = el.data('title');
+                                if (typeof title != "undefined") {
+                                    value = title;
+                                }
+                            }
+                            rowData += csv.stringify(value) + separator;
                         });
                         rowData = rowData.slice(0, rowData.length - 1); //remove last semicolon
 
