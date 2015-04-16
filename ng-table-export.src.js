@@ -28,7 +28,7 @@ angular.module('ngTableExport', [])
                         if (tr.hasClass('ng-table-filters')) {
                             return;
                         }
-                        var tds = tr.find('th'), rowData = '', headers = true;
+                        var tds = tr.find('th'), rowData = '', headerData = '', headers = true;
                         if (tds.length == 0) {
                             tds = tr.find('td');
                             headers = false;
@@ -41,9 +41,14 @@ angular.module('ngTableExport', [])
                                 if (typeof title != "undefined") {
                                     value = title;
                                 }
+                                headerData += value;
                             }
                             rowData += csv.stringify(value) + separator;
                         });
+
+                        if (headers && headerData.trim() === '') {
+                            return;
+                        }
                         rowData = rowData.slice(0, rowData.length - 1); //remove last semicolon
 
                         data += rowData + lineEnding;
