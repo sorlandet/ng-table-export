@@ -35,7 +35,13 @@ angular.module('ngTableExport', [])
                           }
                           angular.forEach(tds, function(td, i) {
                               var el = angular.element(td);
+
+                              if (typeof el.data('skip') != "undefined") {
+                                  return;
+                              }
+
                               var value = el.text();
+
                               if (headers) {
                                   var title = el.data('title');
                                   if (typeof title != "undefined") {
